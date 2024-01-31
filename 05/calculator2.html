@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+
+    #box1 #screen
+    {
+        height:30px;
+        width:190px;
+        border: solid 2px gray;
+        text-align: center;
+    }
+
+    #box1 li
+    {
+        list-style-type:none;
+    }
+
+    #box1 ul 
+    {
+        padding:0px;
+    }
+
+    #box1
+    {
+        border:solid 2px black;
+        width:200px;
+        
+        padding: 10px;
+       
+        text-align: center;
+    }
+
+   #btn {
+    /* border: dotted 1px red; */
+    width: 200px;
+    height: 210px;
+    margin: 0 auto;
+   }
+
+   #ul2 {
+    width: 200px;
+    height: 210px;
+    /* border: dashed 1px blue; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: stretch;
+   }
+
+    #ul2 li {
+        /* float: left; */
+        /* margin: 5px 5px; */
+       
+        flex: 1 1 25%;
+       
+        
+
+    }
+
+    .clr {
+        clear: both;
+    }
+
+    input[type="button"]{
+        padding: 10px;
+    }
+    </style>
+
+
+    <script>
+
+    var res=0;
+    var cal="";
+
+    function calculate(x)
+    {
+        if(x == "=")
+        { 
+            if(cal.length==0)
+            {
+                alert("수식이 올바르지 않습니다");
+            }
+            else
+            {
+                
+                try
+                {
+                    res = eval(cal);
+                    document.querySelector("#screen").value = cal + "=" + res;
+                }
+
+                catch
+                {
+                    alert("수식이 올바르지 않습니다");
+                    return;
+                }
+            }
+        }
+
+        else if(x == "C")
+        {
+            cal = "";
+            document.querySelector("#screen").value = cal;
+        }
+
+        else if(x == "%")
+        {
+            if(cal.length == 0)
+            {
+                res = 0;
+                cal = res;
+                document.querySelector("#screen").value = res;
+            }
+            res = eval(cal) * 100;
+            cal = res;
+            document.querySelector("#screen").value = res;
+        }
+
+        else if(x == "1/x")
+        {
+            if(cal.length == 0)
+            {
+                alert("0으로 나눌 수 없습니다");
+                return;
+            }
+            res = Math.pow(eval(cal),-1);
+            cal = res;
+            document.querySelector("#screen").value = res;
+        }
+
+        else if(x =="x^2")
+        {
+            if(cal.length == 0)
+            {
+                res = Math.pow(0,2);
+                cal = res;
+                document.querySelector("#screen").value = res;
+            }
+            res = Math.pow(eval(cal),2);
+            cal = res;
+            document.querySelector("#screen").value = res;
+        }
+
+        else if(x =="sqrt(x)")
+        {   
+            if(cal.length == 0)
+            {
+                res = Math.sqrt(0);
+                cal = res;
+                document.querySelector("#screen").value = res;
+            }
+            res = Math.sqrt(eval(cal));
+            cal = res;
+            document.querySelector("#screen").value = res;
+        }
+
+        else if(x == "+/-")
+        {
+            if(cal.length == 0)
+            {
+                res = 0;
+                cal = res;
+                document.querySelector("#screen").value = res;
+            }
+            res = eval(cal) * -1;
+            cal = res;
+            document.querySelector("#screen").value = res;
+        }
+
+        else{
+            cal+=x;
+            document.querySelector("#screen").value = cal
+        }
+    }
+
+    
+
+
+    /*
+    function calculate(x)
+    {
+        if(x == "=")
+        { 
+            if(cal.length==0)
+            {
+                alert("수식이 올바르지 않습니다");
+            }
+            else
+            {
+                
+                try
+                {
+                    res = eval(cal);
+                    document.querySelector("#screen").value = cal + "=" + res;
+                }
+
+                catch
+                {
+                    alert("수식이 올바르지 않습니다");
+                    return;
+                }
+            }
+        }
+
+        else if(x == "C")
+        {
+            cal = "";
+            document.querySelector("#screen").value = cal;
+        }
+
+        else if(x == "%")
+        {
+            
+        }
+
+        else if(x == "1/x")
+        {
+
+        }
+
+        else
+        {
+            cal+=x;
+            document.querySelector("#screen").value = cal
+        }
+        
+    }
+    */
+
+    //eval 함수 eval("4+5") 괄호안의 특정 문자열을 4+5라는 계산식으로 변환
+ 
+    //결과창에 수를 버튼으로 입력할때 
+    //windows계산기 프로그램의 결과창 화면이랑 동일하게 동작하게끔 구현
+    </script>
+
+
+</head>
+<body>
+
+<div id="box1">
+
+    <div id="result">
+        <input type="text" id="screen">
+    </div>
+    <div id="btn">
+        <ul id="ul2">
+            
+            <li><input type="button" value = "0" id="button0" onclick="calculate('0')"></li>
+            <li><input type="button" value = "1" id="button1" onclick="calculate('1')"></li>
+            <li><input type="button" value = "2" id="button2" onclick="calculate('2')"></li>
+            <li><input type="button" value = "+" id="buttonP" onclick="calculate('+')"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "3" id="button3" onclick="calculate('3')"></li>
+            <li><input type="button" value = "4" id="button4" onclick="calculate('4')"></li>
+            <li><input type="button" value = "5" id="button5" onclick="calculate('5')"></li>
+            <li><input type="button" value = "-" id="buttonM" onclick="calculate('-')"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "6" id="button6" onclick="calculate('6')"></li>
+            <li><input type="button" value = "7" id="button7" onclick="calculate('7')"></li>
+            <li><input type="button" value = "8" id="button8" onclick="calculate('8')"></li>
+            <li><input type="button" value = "*" id="buttonm" onclick="calculate('*')"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "9" id="button9" onclick="calculate('9')"></li>
+            <li><input type="button" value = "C" id="buttonC" onclick="calculate('C')"></li>
+            <li><input type="button" value = "=" id="buttonE" onclick="calculate('=')"></li>
+            <li><input type="button" value = "/" id="buttonD" onclick="calculate('/')"></li>
+
+            <li><input type="button" value = "%" id="button9" onclick="calculate('%')"></li>
+            <li><input type="button" value = "1/x" id="buttonC" onclick="calculate('1/x')"></li>
+            <li><input type="button" value = "x^2" id="buttonE" onclick="calculate('x^2')"></li>
+            <li><input type="button" value = "sqrt(x)" id="buttonD" onclick="calculate('sqrt(x)')"></li>
+
+            <li><input type="button" value = "." id="button9" onclick="calculate('.')"></li>
+            <li><input type="button" value = "+/-" id="buttonC" onclick="calculate('+/-')"></li>
+
+
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+</html>

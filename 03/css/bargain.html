@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+
+    #left
+    {
+        float:left;
+    }
+
+    #right
+    {
+        float:left;
+    }
+
+    #result
+    {
+        width:500px;
+        height:150px;
+        border:solid 2px black;
+    }
+
+    #clear
+    {
+        clear: left;
+    }
+
+    </style>
+    <script>
+        function showPrice()
+        {
+            var originPrice = document.querySelector("#price").value;
+            var rate = document.querySelector("#dsc_rate").value;
+
+            if(originPrice=="" || rate=="")
+            {
+
+                if(originPrice=="" && rate=="")
+                {
+                    alert("가격과 할인율을 입력하세요");
+                    document.querySelector("#price").focus();
+                    return;
+                }
+
+                if(originPrice=="")
+                {
+                alert("가격을 입력하세요");
+                document.querySelector("#price").focus();
+                return;
+                }
+                
+                else if(rate=="")
+                {
+                    alert("할인율을 입력하세요");
+                    document.querySelector("#dsc_rate").focus();
+                     return;
+                }
+            }
+
+
+            var discountValue = originPrice*(rate/100);
+            var discountedPrice = originPrice - discountValue;
+            document.querySelector("#result").innerHTML = "상품의 원래 가격은" + originPrice + "원이고, 할인율은 " + rate + "%입니다." + discountValue +"원을 절약한 " + discountedPrice + "원에 살 수 있습니다.";
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+<div id="left">
+
+<img src="img/sale.png" width="200" height ="150">
+
+
+</div>
+
+<div id="right">
+
+    원래 가격<input type="text" name id="price">원<br>
+    할인율 <input type="text" name id="dsc_rate">%<br><br>
+    <input type="button" value="할인 가격 계산하기" id="b1" onclick="showPrice()">
+
+    <!-- <script>
+    var a = document.querySelector('#b1');
+    a.onclick = showPrice;
+    </script> -->
+
+
+</div>
+<div id="clear"></div>
+<div id="result">
+    
+
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+
+    #box1 #screen
+    {
+        height:30px;
+        width:190px;
+    }
+
+    #box1 li
+    {
+        list-style-type:none;
+    }
+
+    #box1 ul 
+    {
+        padding:0px;
+    }
+
+    #box1
+    {
+        border:solid 2px black;
+        width:300px;
+       
+        text-align: center;
+    }
+
+   #btn {
+    border: dotted 1px red;
+    width: 200px;
+    height: 210px;
+    margin: 0 auto;
+   }
+
+   #ul2 {
+    width: 200px;
+    height: 210px;
+    border: dashed 1px blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: stretch;
+   }
+
+    #ul2 li {
+        /* float: left; */
+        /* margin: 5px 5px; */
+       
+        flex: 1 1 25%;
+       
+        
+
+    }
+
+    .clr {
+        clear: both;
+    }
+
+    input[type="button"]{
+        padding: 10px;
+    }
+    </style>
+
+
+    <script>
+
+    var charSet = new Array();
+    var res;
+    var i = 0;
+
+    function calculate()
+    {
+
+        charSet[i] = document.querySelector("#button").value;
+        i++;
+
+        if(charSet[i] == '=')
+        {
+                       
+            charSet.pop();
+            res = eval("charSet")
+            document.querySelector("#result").innerHTML = charSet + "=" + res;
+        }
+
+
+    }
+
+    //eval 함수 eval("4+5") 괄호안의 특정 문자열을 4+5라는 계산식으로 변환
+ 
+    //결과창에 수를 버튼으로 입력할때 
+    //windows계산기 프로그램의 결과창 화면이랑 동일하게 동작하게끔 구현
+    </script>
+
+
+</head>
+<body>
+
+<div id="box1">
+
+    <div id="result">
+        <input type="text" id="screen">
+    </div>
+    <div id="btn">
+        <ul id="ul2">
+            
+            <li><input type="button" value = "0" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "1" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "2" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "+" name  id="button" onclick="calculate()"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "3" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "4" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "5" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "-" name  id="button" onclick="calculate()"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "6" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "7" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "8" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "*" name  id="button" onclick="calculate()"></li>
+            <!-- <li class="clr"></li> -->
+            <li><input type="button" value = "9" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "C" name id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "=" name  id="button" onclick="calculate()"></li>
+            <li><input type="button" value = "/" name  id="button" onclick="calculate()"></li>
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+</html>
