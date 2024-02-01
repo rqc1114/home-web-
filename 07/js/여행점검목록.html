@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index-result</title>
+    
+    <style>
+    * {
+        text-align:center;
+    }
+
+    h2 {
+        font-size:20px;
+    }
+
+    </style>
+
+    <link rel = "stylesheet" href="css/input.css">
+    <link rel = "stylesheet" href="css/list.css">
+</head>
+
+<body>
+
+<!-- <div id = "sector">
+<input type="text" id="addingData">
+<input type="button" value ="추가" id="add" onclick="pushList()">
+</div>
+
+<div id ="itemList"></div> -->
+
+<div id ="wrapper">
+    <h2>여행 준비물 점검 목록</h2>
+    <form>
+        <input type="text" id="item" autofocus="true">
+        <button type="button" id="add" class="addBtn">추가</button>
+    </form>
+    <div id="itemList"></div>
+</div>
+
+<script>
+    /*
+    function pushList()
+    {
+        var x = document.querySelector("#addingData").value;
+        if(x == "")
+        {
+            alert("입력한 값이 없습니다.");
+            return;
+        }
+
+    }
+
+    function popList()
+    {
+        
+    }*/
+
+    var itemList = [];
+
+    var addBtn = document.querySelector("#add");
+    addBtn.addEventListener("click", addList);
+
+
+    function removeList()
+    {
+        var id = this.getAttribute("id");
+        itemList.splice(id,1);
+        showList();
+    }
+
+    function showList()
+    {
+        var list ="<ul>";
+
+        for(var i=0; i<itemList.length; i++)
+        {
+            list+= "<li>"+itemList[i]+ "<span class = 'close' id="+i+">X</span></li>";
+        }
+        list+="</ul>";
+        document.querySelector("#itemList").innerHTML = list;
+
+        var remove = document.querySelectorAll(".close");
+
+        for(var i=0; i<remove.length; i++)
+        {
+            remove[i].addEventListener("click",removeList);
+        }
+    }
+
+    function addList()
+    {
+         var item = document.querySelector("#item").value;
+        if(item != null)
+        {
+            itemList.push(item);
+            document.querySelector("#item").value="";
+            document.querySelector("#item").focus();
+        }
+        showList();
+    }
+    </script>
+</body>
+</html>
