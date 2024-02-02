@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>login.html</title>
+	<style>
+
+	*
+	{
+		margin:0;
+		padding:0;
+		font-family:"돋움";
+		font-size:12px;
+		color:#444444;
+	}
+
+	ul
+	{
+		list-style-type:none;
+	}
+
+
+	#login_title
+	{
+		width:585px;
+		padding:10px;
+		margin:50px;
+		font-size:20px;
+		border:solid 5px #e6e2d7;
+	}
+
+	#login_box
+	{
+		width:610px;
+		height:283px;
+		margin:20px 0 0 50px;
+		border:solid 2px #cccccc;
+		border-radius:20px;
+	}
+
+	#login_box #member_login
+	{
+/*		margin: 30px 0 0 50px;*/
+	}
+
+	#left
+	{
+/*		margin : 20px 0px 20px 50px;*/
+	}
+
+	#member_login
+	{
+		margin:30px 0px 0px 50px;
+	}
+
+	#key
+	{
+		margin:30px 0px 0px 80px;
+	}
+
+	#id_pass, #login_btn
+	{
+		display:inline-block;		
+	}
+
+	#input_button,#auto_login,#join_find
+	{
+		border: solid 1px red;
+	}
+
+	#join_find li
+	{
+		list-style-type:disc;
+	}
+
+	#left,#right 
+	{
+		border: solid 1px red;
+		display: inline-block;
+		vertical-align: top;	
+	}
+
+	#input_button
+	{
+		margin:40px 0px 20px 40px;
+	}
+
+	#auto_login
+	{
+		margin:0px 0px 0px 0px;
+	}
+
+	#join_find
+	{
+		margin:0px 0px 0px 0px;
+	}
+
+	</style>
+</head>
+
+<body>
+<h2 id="login_title">로그인</h2>
+<div id="login_box">
+	<img id="member_login" src ="9/login_img.gif">
+	<ul id ="login">
+		<li id ="left">
+			<img id="key" src="9/login_img02.gif">
+		</li> <!--left-->
+		<li id="right">
+			<ul id="input_button">
+				<li id="id_pass">
+					<ul>
+						<li>
+							<span>아이디</span>
+							<input type="text">
+						</li> <!--id-->
+						<li id="pass">
+							<span>비밀번호</span>
+							<input type="password">
+						</li> <!--pass-->
+					</ul>
+				</li> <!--id_pass-->
+				<li id="login_btn">
+					<img src="9/btn_login.gif">
+				</li>
+			</ul> <!--input_button-->
+
+			<div id="auto_login">
+				<input type="checkbox"> 자동 로그인
+			</div>
+
+			<ul id="join_find">
+				<li>아직 회원이 아니세요?</li>
+				<li>아이디 또는 비밀번호를 잊으셨나요?</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
